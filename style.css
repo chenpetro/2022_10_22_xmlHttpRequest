@@ -1,13 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+
+body {
+    font-family: 'Commissioner', sans-serif;
+    /* <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&display=swap" rel="stylesheet"> */
+}
+
+
 .container{
+    width: 100%;
     max-width: 1170px;
     margin: 0 auto;
-    padding: 200px 5px;
+    padding: 200px 5%;
     
 }
 
@@ -15,8 +27,72 @@
     padding: 20px;
     border: 0px;
     border-radius: 5px;
-    background: linear-gradient(90deg, rgba(67, 201, 250, 1) 0%, rgba(98, 240, 157, 1) 50%, rgba(237, 221, 83, 1) 100%);
+    background: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
     font-weight: 700;
-    width: 23%;
     cursor: pointer;
+    transition: 0.5s;
+}
+
+.get-posts:hover{
+    transform: scale(1.1);
+    box-shadow: 7px 9px 16px -1px rgba(0, 0, 0, 0.12);
+}
+
+.posts-box{
+    display: flex;
+    padding-top: 100px;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.card{
+    max-width: 350px;
+    height: auto;
+    background: #404040;
+    margin: 20px 0;
+    outline: 3px solid #85FFBD;
+    color: #ffffff;
+    box-shadow: 10px 10px 24px -11px rgba(0,0,0,0.36);
+    position: relative;
+    transition: 0.5s;
+}
+
+.card:hover{
+    transform: scale(1.1) rotate(15deg);
+    box-shadow: 15px 15px 24px -11px rgba(0,0,0,0.36);
+
+}
+
+/* .card::after{
+    content: '';
+
+} */
+
+.card-body{
+    padding: 25px;
+}
+
+.card__title{
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.card__id{
+   width: 50px;
+   height: 50px;
+   position: absolute;
+   right: -20px;
+   top: -20px;
+   background: #50faa0;
+   color: #000000;
+   font-size: 14px;
+   transform: rotate(-15deg);
+   box-shadow: 10px 10px 24px -11px rgba(0,0,0,0.36);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
 }
