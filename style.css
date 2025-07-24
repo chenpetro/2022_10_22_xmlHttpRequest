@@ -31,6 +31,23 @@ body {
     font-weight: 700;
     cursor: pointer;
     transition: 0.5s;
+    margin-right: 100px;
+}
+
+.add-posts{
+    padding: 20px;
+    border: 0px;
+    border-radius: 5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.5s;
+    background-image: radial-gradient(circle, #5c0067 0%, #00d4ff 100%);
+    color: #ffffff;
+}
+
+.add-posts:hover{
+    transform: scale(1.1);
+    box-shadow: 7px 9px 16px -1px rgba(0, 0, 0, 0.12);  
 }
 
 .get-posts:hover{

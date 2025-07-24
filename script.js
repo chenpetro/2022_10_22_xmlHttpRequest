@@ -1,4 +1,5 @@
 const btnGetPosts = document.querySelector(".get-posts");
+const btnAddPosts = document.querySelector(".add-posts");
 const postBox = document.querySelector(".posts-box");
 
 
@@ -23,13 +24,20 @@ function getPosts(callback) {
   xhr.send();
 }
 
+
+
+
+
 btnGetPosts.addEventListener("click", () => {
   getPosts((response) => {
-    // console.log(response);
-    
-    const fragment = document.createDocumentFragment()
-    response.forEach(post => {
-    const card = document.createElement("div");
+    renderPosts(response)
+
+    })
+
+  });
+
+function cardTemplate(post) {
+     const card = document.createElement("div");
     // card.className = "card";
     card.classList.add('card');
     const cardBody = document.createElement("div");
@@ -45,25 +53,26 @@ btnGetPosts.addEventListener("click", () => {
     article.textContent = post.body; 
     cardBody.append(title, article, id);
     card.appendChild(cardBody);
-    
-
-
-
-    
+    return card;
       // innerHTML
       // textContent
       // innerText
       // nodeValue
 
+    // console.log(card);
 
-    console.log(card);
-    fragment.appendChild(card);
+}
 
-    })
+
+function renderPosts(response) {
+      // console.log(response);
+    const fragment = document.createDocumentFragment()
+    response.forEach(post => {
+    const card = cardTemplate(post);
+          fragment.appendChild(card)
+})
     postBox.appendChild(fragment);
-  });
-});
-
+}
 ////////////////////////////////////////////
 
 
@@ -85,3 +94,37 @@ btnGetPosts.addEventListener("click", () => {
 // }
 
 // console.log(user.name);
+
+
+
+btnAddPosts.addEventListener('click', (e) =>{
+  
+  const newPost = {
+    title: 'title post',
+    body: 'body text post',
+    id: 1,
+  }
+  
+  createPost(newPost, response => {
+    console.log(response);
+    
+  })
+
+})
+
+
+
+
+function createPost(body, cb){
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', 'https://jsonplaceholder.typicode.com/posts')
+  xhr.addEventListener('load', () =>{
+    const response = JSON.parse(xhr.responseText);
+    cb(response);
+  })
+  xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+  xhr.send(JSON.stringify(body));
+  xhr.addEventListener('error', () => {
+    console.log('Error creating post');
+  });
+}
