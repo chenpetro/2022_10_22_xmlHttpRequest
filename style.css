@@ -9,6 +9,7 @@
 
 body {
     font-family: 'Commissioner', sans-serif;
+    position: relative;
     /* <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&display=swap" rel="stylesheet"> */
@@ -35,14 +36,31 @@ body {
 }
 
 .add-posts{
+    width: 100%;
     padding: 20px;
     border: 0px;
     border-radius: 5px;
+    background: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
     font-weight: 700;
     cursor: pointer;
     transition: 0.5s;
-    background-image: radial-gradient(circle, #5c0067 0%, #00d4ff 100%);
-    color: #ffffff;
+    margin-right: 100px;
+}
+
+.open-popup{
+    padding: 20px;
+    border: 0px;
+    border-radius: 5px;
+    background: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.5s;
+    margin-right: 100px;
+}
+
+.open-popup:hover{
+    transform: scale(1.1);
+    box-shadow: 7px 9px 16px -1px rgba(0, 0, 0, 0.12);  
 }
 
 .add-posts:hover{
@@ -112,4 +130,50 @@ body {
    align-items: center;
    justify-content: center;
 
+}
+
+.pop-up{
+    max-width: 600px;
+    background: #404040;
+    box-shadow: 7px 9px 16px 1px rgba(0,0,0,0.12);
+    padding: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+}
+
+.form-add-post {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-add-post input{
+    height: 40px;
+    margin-bottom: 25px;
+    border: 0px;
+    outline: 3px solid transparent; 
+    transition: 0.5s;
+    padding: 20px;
+
+}
+
+
+.form-add-post input:focus{
+    outline: 3px solid #50faa0;
+}
+
+.form-add-post textarea{
+    height: 140px;
+    margin-bottom: 25px;
+    border: 0px;
+    outline: 3px solid transparent; 
+    transition: 0.5s;
+    padding: 20px;
+}
+
+
+.form-add-post input:focus{
+    outline: 3px solid #50faa0;
 }

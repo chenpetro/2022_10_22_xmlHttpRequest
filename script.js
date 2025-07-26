@@ -12,8 +12,7 @@ function getPosts(callback) {
   xhr.addEventListener("load", () => {
     console.log("Loaded successfully");
     const response = JSON.parse(xhr.response);
-    console.log(response);
-
+    // console.log(response);
     callback(response);
   });
 
@@ -106,7 +105,10 @@ btnAddPosts.addEventListener('click', (e) =>{
   }
   
   createPost(newPost, response => {
-    console.log(response);
+    // console.log(response);
+    const card = cardTemplate(response);
+    postBox.insertAdjacentElement('afterbegin', card);
+    console.log(card);
     
   })
 
