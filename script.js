@@ -1,8 +1,39 @@
 const btnGetPosts = document.querySelector(".get-posts");
 const btnAddPosts = document.querySelector(".add-posts");
 const postBox = document.querySelector(".posts-box");
+const popUp = document.querySelector('.pop-up');
+const form = document.querySelector('.form-add-post');
+const closePopUp = document.querySelector('.close-popup');
+console.log(closePopUp);
+closePopUp.addEventListener('click', function(e) {
+  e.preventDefault();
+  popUp.hidden = true;
+})
+// form
 
 
+
+
+
+// popup
+
+// popUp.addEventListener('mousedown', popupMove)
+
+// function popupMove(e) {
+//   // console.log(popUp.offsetWidth);
+//   // console.log(e.pageX);
+//     console.log("Popup move");
+//       popUp.style.cursor = "grabbing";
+//       popUp.style.left = e.pageX-popUp.offsetWidth/2 + 'px';
+//       popUp.style.top = e.pageY-popUp.offsetHeight/2 + 'px';  
+//       document.addEventListener("mousemove", popupMove);
+//     }
+
+// popUp.addEventListener("mouseup", function () {
+//   document.removeEventListener("mousemove", popupMove);
+//   popUp.style.cursor = "default";
+//   })  
+  // popup
 
 
 function getPosts(callback) {
@@ -96,19 +127,33 @@ function renderPosts(response) {
 
 
 
-btnAddPosts.addEventListener('click', (e) =>{
-  
-  const newPost = {
-    title: 'title post',
-    body: 'body text post',
+// btnAddPosts.addEventListener('click', (e) =>{
+  form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const formData = new FormData(form);
+  const title = formData.get('title');
+  const text = formData.get('text');
+  console.log(title);
+    
+  let newPost = {
+    title: title,
+    body: text,
     id: 1,
   }
+  form.reset();
+
+// })
+  // const newPost = {
+  //   title: 'title post',
+  //   body: 'body text post',
+  //   id: 1,
+  // }
   
   createPost(newPost, response => {
     // console.log(response);
     const card = cardTemplate(response);
     postBox.insertAdjacentElement('afterbegin', card);
-    console.log(card);
+    // console.log(card);
     
   })
 
