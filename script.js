@@ -175,3 +175,5 @@ function createPost(body, cb){
     console.log('Error creating post');
   });
 }
+
+// lesson 7 03.12
