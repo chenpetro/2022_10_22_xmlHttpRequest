@@ -35,6 +35,88 @@ closePopUp.addEventListener('click', function(e) {
 //   })  
   // popup
 
+//////////////////////////////////////////////////
+let active = false; 
+let currentX; 
+let currentY; 
+let initialX; 
+let initialY; 
+let xOffset = 0; 
+let yOffset = 0;
+
+document.addEventListener("touchstart", dragStart, false); 
+document.addEventListener("touchend", dragEnd, false); 
+document.addEventListener("touchmove", drag, false);
+
+
+
+document.addEventListener("mousedown", dragStart, false); 
+document.addEventListener("mouseup", dragEnd, false); 
+document.addEventListener("mousemove", drag, false);
+
+function dragStart(e) {
+   if (e.type === "touchstart") { 
+    initialX = e.touches[0].clientX - xOffset; 
+    initialY = e.touches[0].clientY - yOffset; 
+  } else { 
+    initialX = e.clientX - xOffset; 
+    initialY = e.clientY - yOffset; 
+  } 
+
+  if (e.target === popUp) {
+     active = true; 
+     addActiveClass() 
+    }
+}
+
+function dragEnd(e) { 
+  initialX = currentX; 
+  initialY = currentY; 
+  active = false; 
+  addActiveClass() 
+}
+
+function addActiveClass() { 
+  popUp.classList.toggle('popup-move'); 
+}
+
+function drag(e) { 
+  if (active) {
+    e.preventDefault();
+
+    if (e.type === "touchmove") {
+        currentX = e.touches[0].clientX - initialX;
+        currentY = e.touches[0].clientY - initialY;
+    } else {
+        currentX = e.clientX - initialX;
+        currentY = e.clientY - initialY;
+    }
+
+    xOffset = currentX;
+    yOffset = currentY;
+
+    setTranslate(currentX, currentY, popUp);
+}
+}
+
+function setTranslate(currentX, currentY, el) { 
+  el.style.transform = "translate3d(" + currentX + "px, " + currentY + "px, 0)"; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function getPosts(callback) {
   const xhr = new XMLHttpRequest();
